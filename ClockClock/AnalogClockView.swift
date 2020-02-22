@@ -166,6 +166,8 @@ class AnalogClockView: UIView {
             
             let center = CGPoint(x: self.frame.size.width/2, y: self.frame.size.height/2)
             let radius = (frame.size.width - circleWidth)/2
+            
+            //print("center: ", center, " radius: ", radius)
             context.addArc(center: center, radius: radius, startAngle: 0.0, endAngle: .pi * 2.0, clockwise: true)
             
             context.strokePath()

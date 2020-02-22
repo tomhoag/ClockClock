@@ -57,11 +57,22 @@ class ViewController: UIViewController {
         let handWidth = max(1.0, CGFloat(defaults.float(forKey: "handWidth")))
 
         digits.forEach {
+            $0.update()
             $0.handColor = foregroundColor
             $0.circleColor = foregroundColor
             $0.backgroundColor = backgroundColor
             $0.handWidth = handWidth
             $0.animationTime = 0
+        }
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        coordinator.animate(alongsideTransition: { (context) in
+            // empty
+        }) { (context) in
+            self.digits.forEach { $0.update() }
         }
     }
     

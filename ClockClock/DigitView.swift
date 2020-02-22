@@ -58,7 +58,7 @@ final class DigitView: UIView {
         let d = digit >= 0 ? digit : -digit
         let (_, remainder) = d.quotientAndRemainder(dividingBy: 10)
         // use remainder to index into the digit functions and execute it
-        digitFunctions[remainder](completion)
+        digitFunctions[remainder](completion)        
     }
     
     override init(frame: CGRect) {
@@ -85,13 +85,28 @@ final class DigitView: UIView {
         digitFunctions.append(eight)
         digitFunctions.append(nine)
         
-        let diameter = min(frame.size.width/2, frame.size.height/3)
-        
+        let diameter:CGFloat = min(frame.size.width/2, frame.size.height/3)
+
+        print("setup: ", diameter, frame.size.width, frame.size.height)
+
         for col in 0...2 {
             for row in 0...1 {
                 let view = AnalogClockView(frame: CGRect(x: CGFloat(row) * diameter, y: CGFloat(col) * diameter, width: diameter, height: diameter))
                 self.addSubview(view);
                 clocks.append(view);
+            }
+        }
+    }
+    
+    func update() {
+        
+        let diameter:CGFloat = min(frame.size.width/2, frame.size.height/3)
+        
+        var i = 0
+        for col in 0...2 {
+            for row in 0...1 {
+                clocks[i].frame = CGRect(x: CGFloat(row) * diameter, y: CGFloat(col) * diameter, width: diameter, height: diameter)
+                i += 1
             }
         }
     }
