@@ -8,7 +8,9 @@ For fun, press and hold to see the clocks animate digits sequentially from the c
 
 ![](clockclock.mov)
 
-Swipe left for settings:
+Swipe left for settings (change foreground and background color, hand width)
 
 ![](clockclock-settings.png)
+
+oops -- this screenshot caught the hands in transition . . .
 
